@@ -73,7 +73,9 @@ def predict_caption(model, tokenizer, max_length, feature):
     caption = in_text.split(" ")[1:-1]  # Split into words and remove the first and last tokens
     return " ".join(caption)  # Rejoin the remaining words into a single string
 
-
+@app.route("/")
+def home():
+    return "Hello from Flask on Vercel!"
 
 @app.route("/generate_caption", methods=["POST"])
 def generate_caption():
@@ -92,5 +94,4 @@ def generate_caption():
     return jsonify({"caption": caption})
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True)
